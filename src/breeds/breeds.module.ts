@@ -3,9 +3,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { BreedsController } from './breeds.controller';
 import { BreedsService } from './breeds.service';
 import { Breed } from './entities/breed.entity';
+import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Breed])],
+  imports: [TypeOrmModule.forFeature([Breed]), AuthModule],
   controllers: [BreedsController],
   providers: [BreedsService],
   exports: [TypeOrmModule],
