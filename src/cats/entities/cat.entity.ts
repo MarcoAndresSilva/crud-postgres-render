@@ -1,4 +1,10 @@
-import { Column, DeleteDateColumn, Entity, JoinColumn, ManyToOne } from 'typeorm';
+import {
+  Column,
+  DeleteDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+} from 'typeorm';
 import { Breed } from '../../breeds/entities/breed.entity';
 import { User } from '../../users/entities/user.entity';
 
@@ -18,15 +24,14 @@ export class Cat {
   deletedAt: Date;
 
   @ManyToOne(() => Breed, (breed) => breed.id, {
-    eager: true, // para que traiga las raza al hacer un findOne
+    eager: true,
   })
   breed: Breed;
 
   @ManyToOne(() => User)
-  @JoinColumn({ name: 'userEmail', referencedColumnName: 'email',  })
+  @JoinColumn({ name: 'userEmail', referencedColumnName: 'email' })
   user: User;
 
   @Column()
   userEmail: string;
-
 }
